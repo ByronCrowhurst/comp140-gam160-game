@@ -1,8 +1,3 @@
-﻿  Daddy.cpp
-c:\users\imhip\source\repos\hab\hab\daddy.cpp(20): warning C4101: 'canvas': unreferenced local variable
-  input.cpp
-  keyini.cpp
-c:\users\imhip\source\repos\hab\hab\keyini.cpp(27): warning C4101: 'byteSize': unreferenced local variable
-  Generating Code...
-c:\users\imhip\source\repos\hab\hab\input.cpp(38): warning C4715: 'input::GetInput': not all control paths return a value
-  HAB.vcxproj -> C:\Users\imhip\source\repos\HAB\Debug\HAB.exe
+﻿  Main.cpp
+c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\main.cpp(20): warning C4101: 'canvas': unreferenced local variable
+  HAB.vcxproj -> C:\Users\imhip\Documents\A Uni\Comp 140\Comp140 Controller Project\comp140-gam160-game\Debug\HAB.exe

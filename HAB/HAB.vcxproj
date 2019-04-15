@@ -123,7 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Daddy.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="keyini.cpp" />
     <ClCompile Include="render.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="keyini.h" />
     <ClInclude Include="render.h" />

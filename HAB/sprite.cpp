@@ -1,16 +1,20 @@
 #include "sprite.h"
 
-sprite::sprite(int newX, int newY, int newW, int newH, SDL_Texture* newTexture)
+sprite::sprite(int newX, int newY, int newW, int newH)
 {
 	x = newX;
 	y = newY;
 	width = newW;
 	height = newH;
+	//boundingBox.w = width;
+	//boundingBox.h = height;
+	texture = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
+
+	SDL_FillRect(texture, NULL, (0, 254, 254));
+	boundingBox = texture->clip_rect;
 	boundingBox.x = x;
 	boundingBox.y = y;
-	boundingBox.w = width;
-	boundingBox.h = height;
-	texture = newTexture;
+
 }
 
 sprite::~sprite()
@@ -43,9 +47,14 @@ SDL_Rect sprite::getRect()
 	return boundingBox;
 }
 
-SDL_Texture* sprite::getTexture()
+SDL_Surface sprite::getTexture()
 {
-	return texture;
+	return* texture;
+}
+
+void sprite::draw(SDL_Surface *destination)
+{
+	SDL_BlitSurface(texture, NULL, destination, &boundingBox);
 }
 
 void sprite::setX(int newX)
@@ -76,7 +85,12 @@ void sprite::setRect()
 	boundingBox.h = height;
 }
 
-void sprite::setTexture(SDL_Texture* newTexture)
+void sprite::setTexture(SDL_Surface *newTexture)
 {
 	texture = newTexture;
+}
+
+void sprite::setSprite(int xIndex, int yIndex)
+{
+	// texture = 
 }

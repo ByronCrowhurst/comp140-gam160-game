@@ -4,6 +4,7 @@ input::input()
 {
 	keyini keys;
 	enum inputs {};
+	std::cout << "Action: " << keys.actions << "\n" << "Key Binding: " << keys.keyBind << std::endl;
 }
 
 input::~input()
@@ -13,8 +14,6 @@ input::~input()
 
 int input::GetInput()
 {
-	
-	std::cout << "Now getting player keys" << std::endl;
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{

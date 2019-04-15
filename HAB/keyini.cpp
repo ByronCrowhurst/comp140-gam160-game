@@ -2,11 +2,40 @@
 
 keyini::keyini()
 {
-	fileStream.open("Config/keyconfig.txt", fileStream.binary);
+	fileStream.open("Config/keyconfig.txt", fileStream.in);
 	if (fileStream.is_open())
 	{
-		std::cout << "File found." << std::endl;
-		while(fileStream.getline)
+		bool keyActionSwitch = false;
+		std::stringstream entireFile;
+		entireFile << fileStream.rdbuf();
+		std::string entireText;
+		entireText = entireFile.str();
+		for (int i = 0; i < entireText.size(); i++)
+		{
+			if (!keyActionSwitch)
+			{
+				if (entireText[i] != '=')
+				{
+					keyBind += entireText[i];
+				}
+				else
+				{
+					keyActionSwitch = true;
+				}
+			}
+			else if (keyActionSwitch)
+			{
+				if (entireText[i] != '\n')
+				{
+					actions += entireText[i];
+				}
+				else
+				{
+					keyActionSwitch = false;
+				}
+			}
+		}
+		
 	}
 	else
 	{

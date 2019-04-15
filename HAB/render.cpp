@@ -17,7 +17,7 @@ void render::rendering(SDL_Renderer *renderer, sprite* spr[], const SDL_Rect* ca
 	{
 		for (int i = 0; i < size; i++)
 		{
-			SDL_RenderCopy(renderer, spr[i]->getTexture(), canvas, canvas);
+			//SDL_RenderCopy(renderer, spr[i]->getTexture(), canvas, canvas);
 		}
 	}
 	SDL_RenderPresent(renderer);
