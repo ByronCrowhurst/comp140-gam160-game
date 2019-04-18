@@ -1,5 +1,10 @@
 #include "sprite.h"
 
+sprite::sprite()
+{
+
+}
+
 sprite::sprite(int newX, int newY, int newW, int newH)
 {
 	x = newX;

@@ -1,3 +1,4 @@
-﻿  Main.cpp
-c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\main.cpp(20): warning C4101: 'canvas': unreferenced local variable
+﻿  update.cpp
+c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\update.h(19): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\update.h(19): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
   HAB.vcxproj -> C:\Users\imhip\Documents\A Uni\Comp 140\Comp140 Controller Project\comp140-gam160-game\Debug\HAB.exe

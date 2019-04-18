@@ -16,16 +16,15 @@ int main(int argc, char * argv[])
 	window = SDL_CreateWindow(title, winPos, winPos, width, height, SDL_WINDOW_OPENGL);
 	render renderLoop;
 	input inputs;
-	//update updateLoop;
+	update updateLoop;
 	SDL_Rect canvas;
 	SDL_Surface *screen = SDL_GetWindowSurface(window);
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_UpdateWindowSurface(window);
 	Uint32 startingTick;
 	sprite boii(width/2, height/2, 32, 32);
-	boii.draw(screen);
-	//SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	//SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 32, 32);
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 1);
+	// SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 32, 32);
 	while (true)
 	{
 		startingTick = SDL_GetTicks();
@@ -38,8 +37,11 @@ int main(int argc, char * argv[])
 			}
 		}
 		inputs.Update(inputs.GetInput());
-		//sprite* spritesToRender[] = input.ReturnObjectToRender();
-		//renderLoop.rendering(renderer, bullet, &canvas);
+		int arraySize = updateLoop.objectSize();
+		sprite *spritesToRender = new sprite[updateLoop.objectSize()];
+		spritesToRender = updateLoop.objectsToRender();
+		renderLoop.rendering(renderer, &spritesToRender, &canvas, screen);
+		delete spritesToRender;
 	}
 	return 0;
 }

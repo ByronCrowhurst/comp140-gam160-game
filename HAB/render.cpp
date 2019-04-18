@@ -10,14 +10,15 @@ render::~render()
 
 }
 
-void render::rendering(SDL_Renderer *renderer, sprite* spr[], const SDL_Rect* canvas, int size)
+void render::rendering(SDL_Renderer *renderer, sprite *spr[], const SDL_Rect* canvas, SDL_Surface *screen)
 {
 	SDL_RenderClear(renderer);
-	if (size > 0)
+	if (sizeof(spr) > 0)
 	{
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < sizeof(spr); i++)
 		{
-			//SDL_RenderCopy(renderer, spr[i]->getTexture(), canvas, canvas);
+			spr[i]->draw(screen);
+			//SDL_RenderCopy(renderer, screen, canvas, canvas);
 		}
 	}
 	SDL_RenderPresent(renderer);

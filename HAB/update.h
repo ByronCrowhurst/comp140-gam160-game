@@ -10,8 +10,11 @@ class update
 public:
 	update();
 	~update();
+	sprite *objectsToRender();
+	int objectSize();
+	sprite *addSprite(sprite* spriteToAdd);
 private:
 
 protected:
-
+	sprite *spritesToDraw[];
 };

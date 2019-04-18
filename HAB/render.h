@@ -9,7 +9,7 @@ class render
 public:
 	render();
 	~render();
-	void rendering(SDL_Renderer *renderer, sprite* spr[], const SDL_Rect* canvas, int size);
+	void rendering(SDL_Renderer *renderer, sprite *spr[], const SDL_Rect* canvas, SDL_Surface *screen);
 private:
 
 protected:

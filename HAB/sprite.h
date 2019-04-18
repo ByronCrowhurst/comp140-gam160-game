@@ -6,6 +6,7 @@
 class sprite
 {
 public:
+	sprite();
 	sprite(int newX, int newY, int newW, int newH);
 	~sprite();
 	int getX();
