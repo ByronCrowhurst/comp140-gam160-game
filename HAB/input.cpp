@@ -4,7 +4,7 @@ input::input()
 {
 	keyini keys;
 	enum inputs {};
-	std::cout << "Action: " << keys.actions << "\n" << "Key Binding: " << keys.keyBind << std::endl;
+	//std::cout << "Action: " << keys.actions << "\n" << "Key Binding: " << keys.keyBind << std::endl;
 }
 
 input::~input()

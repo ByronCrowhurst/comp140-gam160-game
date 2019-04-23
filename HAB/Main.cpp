@@ -1,6 +1,7 @@
-#include "stdafx.h"
 #include <iostream>
 #include <SDL.h>
+#include <vector>
+#include "stdafx.h"
 #include "sprite.h"
 #include "input.h"
 #include "update.h"
@@ -8,6 +9,7 @@
 
 int main(int argc, char * argv[])
 {
+	bool running = true;
 	int winPos = 100;
 	int width = 600;
 	int height = 600;
@@ -24,8 +26,10 @@ int main(int argc, char * argv[])
 	Uint32 startingTick;
 	sprite boii(width/2, height/2, 32, 32);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 1);
+	std::vector<sprite*> spritesToRender = {};
+	spritesToRender.push_back(&boii);
 	// SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 32, 32);
-	while (true)
+	while (running)
 	{
 		startingTick = SDL_GetTicks();
 		SDL_Event e;
@@ -33,15 +37,15 @@ int main(int argc, char * argv[])
 		{
 			if (e.type == SDL_QUIT)
 			{
-				break;
+				running = false;
 			}
 		}
 		inputs.Update(inputs.GetInput());
 		int arraySize = updateLoop.objectSize();
-		sprite *spritesToRender = new sprite[updateLoop.objectSize()];
-		spritesToRender = updateLoop.objectsToRender();
-		renderLoop.rendering(renderer, &spritesToRender, &canvas, screen);
-		delete spritesToRender;
+		//sprite *spritesToRender = new sprite[updateLoop.objectSize()];
+		//spritesToRender = updateLoop.objectsToRender();
+		renderLoop.rendering(renderer, spritesToRender, &canvas, screen);
+		
 	}
 	return 0;
 }

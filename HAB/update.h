@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "render.h"
 #include "stdafx.h"
 #include "SDL.h"
@@ -16,5 +17,5 @@ public:
 private:
 
 protected:
-	sprite *spritesToDraw[];
+	std::vector<sprite*> spriteToDraw;
 };

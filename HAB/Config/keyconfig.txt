@@ -1,2 +1,6 @@
-ACTION_NAME=KEY_NAME
-NEW_ACTION_NAME=KEY_NAME
+MoveUp=
+MoveRight=
+MoveDown=
+MoveLeft=
+ActionOne=
+ActionTwo=

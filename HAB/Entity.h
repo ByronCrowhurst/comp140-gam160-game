@@ -8,10 +8,11 @@
 class Entity
 {
 public:
-	
+	Entity();
+	~Entity();
 private:
 
 protected:
-	sprite entSprSheet;
+	sprite sprSheet;
 	int spriteIndex;
 };

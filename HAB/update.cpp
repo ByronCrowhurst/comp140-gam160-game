@@ -2,7 +2,7 @@
 
 update::update()
 {
-	spritesToDraw[10];
+	
 }
 
 update::~update()
@@ -12,7 +12,7 @@ update::~update()
 
 sprite* update::objectsToRender()
 {
-	return *spritesToDraw;
+	return NULL;
 }
 
 int update::objectSize()
