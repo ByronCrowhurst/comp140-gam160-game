@@ -1,6 +1,6 @@
-MoveUp=
-MoveRight=
-MoveDown=
-MoveLeft=
-ActionOne=
-ActionTwo=
+MoveUp=W
+MoveRight=D
+MoveDown=S
+MoveLeft=A
+ActionOne=Q
+ActionTwo=E

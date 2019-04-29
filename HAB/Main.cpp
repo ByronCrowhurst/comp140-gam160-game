@@ -1,19 +1,27 @@
 #include <iostream>
 #include <SDL.h>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 #include "stdafx.h"
 #include "sprite.h"
 #include "input.h"
 #include "update.h"
 #include "render.h"
+#include "SerialInput.h"
+
+char incomingData[MAX_DATA_LENGTH];
 
 int main(int argc, char * argv[])
 {
+	const char *portName = "\\\\.\\COM3";
 	bool running = true;
 	int winPos = 100;
 	int width = 600;
 	int height = 600;
 	const char* title = "Hot Air Balloon Racing";
+	SerialInput arduino(portName);
 	SDL_Window *window;
 	window = SDL_CreateWindow(title, winPos, winPos, width, height, SDL_WINDOW_OPENGL);
 	render renderLoop;
@@ -28,19 +36,25 @@ int main(int argc, char * argv[])
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 1);
 	std::vector<sprite*> spritesToRender = {};
 	spritesToRender.push_back(&boii);
+	std::string inpstr = "u";
 	// SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 32, 32);
 	while (running)
 	{
 		startingTick = SDL_GetTicks();
-		SDL_Event e;
-		if (SDL_PollEvent(&e))
+		if (arduino.isConnected())
 		{
-			if (e.type == SDL_QUIT)
+			arduino.thisSerial->write(inpstr);
+			if (arduino.thisSerial->available() >= 0)
 			{
-				running = false;
+				std::string readResult = arduino.readSerialPort();
+				std::cout << readResult << std::endl;
+				arduino.serialSplit(readResult);
+				arduino.thisSerial->flush();
 			}
 		}
-		inputs.Update(inputs.GetInput());
+		//puts(incomingData);
+		Sleep(10);
+		//inputs.GetInput();
 		int arraySize = updateLoop.objectSize();
 		//sprite *spritesToRender = new sprite[updateLoop.objectSize()];
 		//spritesToRender = updateLoop.objectsToRender();

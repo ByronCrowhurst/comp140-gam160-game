@@ -78,11 +78,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\imhip\source\repos\HAB\HAB\lib\SDL2-2.0.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\imhip\Documents\A Uni\Comp 140\Comp140 Controller Project\comp140-gam160-game\HAB\lib\serial\include;C:\Users\imhip\source\repos\HAB\HAB\lib\SDL2-2.0.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\imhip\source\repos\HAB\HAB\libraries\SDL2-2.0.9\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\imhip\Documents\A Uni\Comp 140\Comp140 Controller Project\comp140-gam160-game\HAB\lib\serial\visual_studio\Debug;C:\Users\imhip\source\repos\HAB\HAB\libraries\SDL2-2.0.9\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;serial.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -128,6 +128,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="keyini.cpp" />
     <ClCompile Include="render.cpp" />
+    <ClCompile Include="SerialInput.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="update.cpp" />
   </ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="keyini.h" />
     <ClInclude Include="render.h" />
+    <ClInclude Include="SerialInput.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="update.h" />
   </ItemGroup>

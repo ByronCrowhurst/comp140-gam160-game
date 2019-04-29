@@ -28,7 +28,6 @@ private:
 protected:
 	int x;
 	int y;
-
 	int width;
 	int height;
 	SDL_Rect boundingBox;
