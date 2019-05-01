@@ -52,6 +52,22 @@ int main(int argc, char * argv[])
 		int arraySize = updateLoop.objectSize();
 		renderLoop.rendering(spritesToRender);
 	}
-	delete player;
+	//delete player;
+	auto iter = spritesToRender.begin();
+	while (iter != spritesToRender.end())
+	{
+		if (*iter)
+		{
+			delete (*iter);
+			(*iter) = nullptr;
+			iter = spritesToRender.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
+
+	spritesToRender.clear();
 	return 0;
 }
