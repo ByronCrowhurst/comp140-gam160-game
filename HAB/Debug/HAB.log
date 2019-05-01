@@ -1,4 +1,2 @@
-﻿  SerialInput.cpp
-c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\serialinput.cpp(21): warning C4101: 'e': unreferenced local variable
-c:\users\imhip\documents\a uni\comp 140\comp140 controller project\comp140-gam160-game\hab\serialinput.cpp(67): warning C4018: '<': signed/unsigned mismatch
+﻿  Main.cpp
   HAB.vcxproj -> C:\Users\imhip\Documents\A Uni\Comp 140\Comp140 Controller Project\comp140-gam160-game\Debug\HAB.exe

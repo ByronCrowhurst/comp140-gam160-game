@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <vector>
+#include <tuple>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -22,22 +23,16 @@ int main(int argc, char * argv[])
 	int height = 600;
 	const char* title = "Hot Air Balloon Racing";
 	SerialInput arduino(portName);
-	SDL_Window *window;
-	window = SDL_CreateWindow(title, winPos, winPos, width, height, SDL_WINDOW_OPENGL);
-	render renderLoop;
+	render renderLoop(title, winPos, width, height);
 	input inputs;
 	update updateLoop;
-	SDL_Rect canvas;
-	SDL_Surface *screen = SDL_GetWindowSurface(window);
-	SDL_Init(SDL_INIT_VIDEO);
-	SDL_UpdateWindowSurface(window);
 	Uint32 startingTick;
-	sprite boii(width/2, height/2, 32, 32);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 1);
+	sprite *player=new sprite(width/2, height/2, 32, 32, "Player");
 	std::vector<sprite*> spritesToRender = {};
-	spritesToRender.push_back(&boii);
+	spritesToRender.push_back(player);
+
 	std::string inpstr = "u";
-	// SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 32, 32);
+	std::vector<float> serials;
 	while (running)
 	{
 		startingTick = SDL_GetTicks();
@@ -47,19 +42,16 @@ int main(int argc, char * argv[])
 			if (arduino.thisSerial->available() >= 0)
 			{
 				std::string readResult = arduino.readSerialPort();
-				std::cout << readResult << std::endl;
-				arduino.serialSplit(readResult);
+				std::tuple<float, float, float> serials(arduino.serialSplit(readResult));
 				arduino.thisSerial->flush();
+				inputs.GetSerialInputs(serials, player);
 			}
 		}
-		//puts(incomingData);
-		Sleep(10);
-		//inputs.GetInput();
+
+		running = inputs.GetInput(player);
 		int arraySize = updateLoop.objectSize();
-		//sprite *spritesToRender = new sprite[updateLoop.objectSize()];
-		//spritesToRender = updateLoop.objectsToRender();
-		renderLoop.rendering(renderer, spritesToRender, &canvas, screen);
-		
+		renderLoop.rendering(spritesToRender);
 	}
+	delete player;
 	return 0;
 }

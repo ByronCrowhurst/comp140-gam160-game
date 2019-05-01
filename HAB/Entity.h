@@ -13,6 +13,6 @@ public:
 private:
 
 protected:
-	sprite sprSheet;
+	//sprite sprSheet;
 	int spriteIndex;
 };

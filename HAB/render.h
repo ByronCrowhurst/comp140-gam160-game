@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 #include "stdafx.h"
 #include "SDL.h"
 #include "sprite.h"
@@ -8,11 +9,15 @@
 class render
 {
 public:
-	render();
+	render(const char *title, int winPos, int width, int height);
 	~render();
-	void rendering(SDL_Renderer *renderer, std::vector<sprite*> spr, const SDL_Rect* canvas, SDL_Surface *screen);
+	void rendering(std::vector<sprite*>& spr);
 private:
-
+	SDL_Window *window;
+	SDL_Surface *screen;
+	SDL_Renderer* renderer;
+	SDL_Rect screenRect;
+	bool fullScreen;
 protected:
 
 };

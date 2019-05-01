@@ -2,7 +2,7 @@
 #ifndef SERIALINPUT_H
 #define SERIALINPUT_H
 
-#define ARDUINO_WAIT_TIME 1000
+#define ARDUINO_WAIT_TIME 500
 #define MAX_DATA_LENGTH 255
 
 #include "stdafx.h"
@@ -10,6 +10,7 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <tuple>
 #include <serial/serial.h>
 
 
@@ -24,12 +25,13 @@ public:
 	std::string readSerialPort();
 	bool writeSerialPort(char *buffer, unsigned int buffSize);
 	bool isConnected();
-	void serialSplit(std::string toBeSplit);
+	std::tuple<float, float, float> serialSplit(std::string toBeSplit);
 private:
 	HANDLE handler;
 	bool connected;
 	COMSTAT status;
 	DWORD errors;
+	bool firstResult;
 protected:
 
 };

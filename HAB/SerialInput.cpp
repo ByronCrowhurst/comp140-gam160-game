@@ -10,7 +10,7 @@ SerialInput::SerialInput(const char *portName)
 		std::string port = device.port.c_str();
 		try
 		{
-			thisSerial = new serial::Serial(port, CBR_9600, serial::Timeout::simpleTimeout(ARDUINO_WAIT_TIME));
+			thisSerial = new serial::Serial(port, CBR_9600, serial::Timeout::simpleTimeout(1000));
 			if (thisSerial->isOpen())
 			{
 				std::cout << "Success!" << std::endl;
@@ -21,6 +21,7 @@ SerialInput::SerialInput(const char *portName)
 		catch(std::exception &e)
 		{
 			this->connected = false;
+			std::cout << "Nope!" << std::endl;
 		}
 	}
 
@@ -35,7 +36,6 @@ SerialInput::~SerialInput()
 std::string SerialInput::readSerialPort()
 {
 	std::string result = thisSerial->readline();
-	std::cout << result << std::endl;
 	return result;
 }
 
@@ -56,9 +56,10 @@ bool SerialInput::isConnected()
 	return this->connected;
 }
 
-void SerialInput::serialSplit(std::string toBeSplit)
+std::tuple<float, float, float> SerialInput::serialSplit(std::string toBeSplit)
 {
-	if (toBeSplit.size() >= 5)
+	//std::cout << toBeSplit << std::endl;
+	if (toBeSplit.size() >= 6)
 	{
 		int badIdea = 0;
 		std::string leftPotStr = "";
@@ -106,6 +107,10 @@ void SerialInput::serialSplit(std::string toBeSplit)
 		float leftPotValue = std::stof(leftPotStr);
 		float rightPotValue = std::stof(rightPotStr);
 		float gyroValue = std::stof(gyroStr);
-		std::cout << "C++ Data: " << leftPotValue << " " << rightPotValue << " " << gyroValue << std::endl;
+		std::tuple<float, float, float> serial(leftPotValue, rightPotValue, gyroValue);
+		//std::cout << "Serials: " << std::get<0>(serial) << " " << std::get<1>(serial) << " " << std::get<2>(serial) << std::endl;
+		return serial;
 	}
+	std::tuple<float, float, float> serial(0, 0, 0);
+	return serial;
 }
